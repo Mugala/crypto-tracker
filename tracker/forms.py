@@ -7,10 +7,13 @@ class NewsLetterForm(forms.Form):
     email = forms.EmailField(label='Email')
 
 
-class Profile (forms.ModelForm):
+class User_details (forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['first_name', 'last_name', 'email', ]
-        exclude = ['neighbourhood', ]
+        fields = ['first_name', 'last_name', 'bio', 'default_pic', ]
+        exclude = ['email', ]
+
+   
+
 
 
