@@ -1,35 +1,25 @@
 {%extends 'dashboard/base.html'%} {% load bootstrap3%} {% block content %} {{block.super}}
 
 <div class="container-fluid">
+  <div class="row">
+    <h1>News/Information:</h1>
+    <hr>
     <div class="row">
-      <h1>News/Information:</h1>
-      <hr>
-      
-        <div class="row">
-            {% for article in articles %}
-          <!-- displaying details -->
-          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-              <h3 class="text-center" class="navbar-brand"> {{ article.title}} </h3>
-              <img src="{{ article.urlToImage }}" alt="News image" height="300px", width="500px">
-              <p>{{ article.description}} </p>
-              <h5 class="text-center" class="navbar-brand"> Author: {{ article.author}} </h5>
-              <a href="{{article.url}}" class="btn btn-primary">Read article</a>
-              <h4 class="text-center" class="navbar-brand"> Posted: {{ article.publishedAt}} </h4>
-          
-
-            
-          </div>
-          {% empty %}
-          {% endfor %}
-        </div>
-  
-       
-        <div class="row">
-          <h2 class="text-center">You do not have an account</h2>
-        </div>
-       
-  
-     
+      {% for article in articles %}
+      <!-- displaying details -->
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <h3 class="text-center" class="navbar-brand"> {{ article.title}} </h3>
+        <img src="{{ article.urlToImage }}" alt="News image" height="300px" , width="500px">
+        <p>{{ article.description}} </p>
+        <h5 class="text-center" class="navbar-brand"> Author: {{ article.author}} </h5>
+        <a href="{{article.url}}" class="btn btn-primary">Read article</a>
+        <h4 class="text-center" class="navbar-brand"> Posted: {{ article.publishedAt}} </h4>
+      </div>
+      {% empty %} {% endfor %}
+    </div>
+    <div class="row">
+      <h2 class="text-center">You do not have an account</h2>
     </div>
   </div>
+</div>
 {% endblock %}

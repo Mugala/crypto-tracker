@@ -1,27 +1,18 @@
-{%extends 'dashboard/base.html'%} 
-{% block content %}
+{%extends 'dashboard/base.html'%} {% block content %}
 <div class="container">
-
   <div class="row">
     {% if currencies%}
-      <h2>Found {{ currencies|length }} of searched term {{message}}</h2>
-    {% else %}
-      <h2> Found 0 currencies for the search term {{message}}</h2>
-    {% endif %}
-
+    <h2>Found {{ currencies|length }} of searched term {{message}}</h2> {% else %}
+    <h2> Found 0 currencies for the search term {{message}}</h2> {% endif %}
   </div>
 
   <div class="row">
-
-  {% if currencies %}
-    {% for currency in currencies %}
-      <div class="col-sm-6 col-md-3">
-          <h2 class="text-center" class="navbar-brand"> Name of currency: {{ currency.name}} </h2>
-            <h4 class="text-center" class="navbar-brand"> Market symbol: {{ currency.symbol}} </h4>
-    
-      </div>
-    {% endfor %}
-  {% endif %}
+    {% if currencies %} {% for currency in currencies %}
+    <div class="col-sm-6 col-md-3">
+      <h2 class="text-center" class="navbar-brand"> Name of currency: {{ currency.name}} </h2>
+      <h4 class="text-center" class="navbar-brand"> Market symbol: {{ currency.symbol}} </h4>
+    </div>
+    {% endfor %} {% endif %}
   </div>
 </div>
 {% endblock %}
