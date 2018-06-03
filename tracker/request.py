@@ -3,7 +3,7 @@ import json
 from .models import Currency, Currency_details, Article
 
 
-api_key = '3c202c9f09364c66af773f1ee87254ed'
+api_key = '******************'
 news_base_url = 'https://newsapi.org/v2/everything?sources=crypto-coins-news&apiKey={}'
 
 

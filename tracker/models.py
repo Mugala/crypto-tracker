@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from twilio.rest import Client
 
 # Create your models here.
 
@@ -23,6 +24,7 @@ class CryptocurrencyValue (models.Model):
     currency= models.CharField(max_length=30)
     set_value = models.CharField(max_length=30)
     phone_number = models.CharField(max_length = 20)
+    message = models.CharField(max_length = 60)
 
 
 '''

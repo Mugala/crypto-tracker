@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^news/', views.news, name='news'),
     url(r'^accounts/profile/', views.user_profile, name='user_profile'),
     url(r'^accounts/my_profile/', views.my_profile, name='my_profile'),
+    url(r'^accounts/notification/', views.notification, name='notification'),
 ]
 
 if settings.DEBUG:

@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from . request import all_currencies, all_news
 from .models import Profile, Currency, Currency_details, Article
-from .forms import NewsLetterForm, User_details
+from .forms import NewsLetterForm, User_details,UpdateOnCurrency
 from django.contrib.auth.decorators import login_required
+from twilio.rest import Client
 
 # Create your views here.
 
@@ -56,6 +57,23 @@ def my_profile(request):
     user_details = Profile.user_details()
 
     return render(request, 'dashboard/user_account.html', {"user_details": user_details, })
+
+'''
+View function for the user to be able to set the details of when he/she wants to be notified about the value of the currency
+'''
+def notification(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = UpdateOnCurrency(request.POST, request.FILES)
+        if form.is_valid():
+            notification_profile = form.save(commit=False)
+            notification_profile.user = current_user
+            notification_profile.save()
+
+            return redirect("my_profile")
+    else:
+        notification_form = UpdateOnCurrency()
+    return render(request, 'dashboard/notification_form.html', {"notification_form": notification_form})
 
 '''
 View function for the functionality users will be able to enter the name of any cryptocurrency and view its details
